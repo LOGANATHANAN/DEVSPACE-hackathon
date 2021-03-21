@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert,Container } from "react-bootstrap"
+import { Form, Button, Card, Alert,Container,Nav,Navbar } from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
@@ -23,7 +23,7 @@ export default function Signup() {
       setError("")
       setLoading(true)
       await signup(emailRef.current.value, passwordRef.current.value)
-      history.push("/")
+      history.push("/dashboard")
     } catch {
       setError("Failed to create an account")
     }
@@ -33,6 +33,22 @@ export default function Signup() {
 
   return (
     <>
+       <Navbar bg="primary" variant="dark">
+    <Navbar.Brand href="#home">Fitness Freak</Navbar.Brand>
+    <Nav className="mr-auto">
+    <Link to="/" className="btn btn-info w-40">
+    Home
+  </Link>
+    </Nav>
+    <Form inline>
+    <Link to="/signup" className="btn btn-dark w-40">
+    Sign Up
+  </Link>
+  <Link to="/login" className="btn btn-dark w-40">
+    Log In
+  </Link>
+    </Form>
+  </Navbar>
     <Container
       className="d-flex align-items-center justify-content-center"
       style={{ minHeight: "100vh" }}

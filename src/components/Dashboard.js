@@ -8,7 +8,7 @@ export default function Dashboard() {
   const { currentUser, logout } = useAuth()
   const history = useHistory()
 
-  async function handleLogout() {
+   async function handleLogout() {
     setError("")
 
     try {
@@ -18,11 +18,11 @@ export default function Dashboard() {
       setError("Failed to log out")
     }
   }
-  async function handleLeaderboard() {
+  async function handleHealthtips() {
     setError("")
 
     try {
-      history.push("/signup")
+      history.push("/Healthtips")
     } catch {
       setError("Failed to render")
     }
@@ -33,8 +33,8 @@ export default function Dashboard() {
     <Navbar bg="dark" variant="dark">
     <Navbar.Brand href="#home">Home</Navbar.Brand>
       <Nav className="mr-auto">
-      <Nav.Link onClick={handleLeaderboard}>Leaderboard</Nav.Link>
-      <Nav.Link href="#healthtips">Health Tips</Nav.Link>
+      <Nav.Link >Leaderboard</Nav.Link>
+      <Nav.Link onClick={handleHealthtips}>Health Tips</Nav.Link>
       </Nav>
       <Form inline>
       <Link to="/update-profile" className="btn btn-info w-40">

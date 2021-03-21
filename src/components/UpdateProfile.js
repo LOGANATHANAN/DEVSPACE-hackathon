@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react"
-import { Form, Button, Card, Alert } from "react-bootstrap"
+import { Form, Button, Card, Alert,Navbar,Nav,Container} from "react-bootstrap"
 import { useAuth } from "../contexts/AuthContext"
 import { Link, useHistory } from "react-router-dom"
 
@@ -31,7 +31,7 @@ export default function UpdateProfile() {
 
     Promise.all(promises)
       .then(() => {
-        history.push("/")
+        history.push("/dashboard")
       })
       .catch(() => {
         setError("Failed to update account")
@@ -43,6 +43,19 @@ export default function UpdateProfile() {
 
   return (
     <>
+       <Navbar bg="dark" variant="dark">
+    <Navbar.Brand href=""></Navbar.Brand>
+      <Nav className="mr-auto">
+      <Link to="/dashboard" className="btn btn-info w-40">
+            Back To Dashboard
+          </Link>
+          </Nav>
+    </Navbar>
+    <Container
+      className="d-flex align-items-center justify-content-center"
+      style={{ minHeight: "100vh" }}
+    >
+      <div className="w-100" style={{ maxWidth: "800px" }}>
       <Card>
         <Card.Body>
           <h2 className="text-center mb-4">Update Profile</h2>
@@ -79,9 +92,8 @@ export default function UpdateProfile() {
           </Form>
         </Card.Body>
       </Card>
-      <div className="w-100 text-center mt-2">
-        <Link to="/">Cancel</Link>
       </div>
+      </Container>
     </>
   )
 }
